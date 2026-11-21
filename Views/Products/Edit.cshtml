@@ -1,0 +1,19 @@
+@model Session04_MVC.ViewModels.ProductViewModel
+
+@{
+    ViewData["Title"] = "Edit Product";
+}
+
+<div class="card shadow-sm p-4 col-md-8 mx-auto">
+    <h2>Edit Product (Session 04)</h2>
+    <hr />
+    <form asp-action="Edit" method="post" enctype="multipart/form-data">
+        <input type="hidden" asp-for="Id" />
+        <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+        <partial name="_CreateEditPartial" model="Model" />
+
+        <button type="submit" class="btn btn-warning mt-3">Update Product</button>
+        <a asp-action="Index" class="btn btn-secondary mt-3">Cancel</a>
+    </form>
+</div>

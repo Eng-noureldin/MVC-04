@@ -1,0 +1,44 @@
+@model Session04_MVC.ViewModels.ProductViewModel
+
+@{
+    ViewData["Title"] = "Product Details";
+}
+
+<div class="card shadow-sm p-4 col-md-8 mx-auto">
+    <h2>Product Details</h2>
+    <hr />
+    <div class="row">
+        <div class="col-md-8">
+            <dl class="row">
+                <dt class="col-sm-4">Product Name</dt>
+                <dd class="col-sm-8 fw-bold">@Model.Name</dd>
+
+                <dt class="col-sm-4">Category</dt>
+                <dd class="col-sm-8"><span class="badge bg-secondary fs-6">@Model.CategoryName</span></dd>
+
+                <dt class="col-sm-4">Price</dt>
+                <dd class="col-sm-8 text-success fw-bold fs-5">$@Model.Price.ToString("F2")</dd>
+
+                <dt class="col-sm-4">Stock</dt>
+                <dd class="col-sm-8">@Model.StockQuantity units in stock</dd>
+
+                <dt class="col-sm-4">Description</dt>
+                <dd class="col-sm-8">@Model.Description</dd>
+            </dl>
+        </div>
+        <div class="col-md-4 text-center">
+            @if (!string.IsNullOrEmpty(Model.ExistingImageName))
+            {
+                <img src="~/files/images/@Model.ExistingImageName" alt="@Model.Name" class="img-fluid rounded shadow-sm" />
+            }
+            else
+            {
+                <div class="border p-4 text-muted bg-light rounded">No Image Available</div>
+            }
+        </div>
+    </div>
+    <div class="mt-4">
+        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">Edit</a>
+        <a asp-action="Index" class="btn btn-secondary">Back to Catalog</a>
+    </div>
+</div>
